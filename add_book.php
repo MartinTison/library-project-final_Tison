@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== true) {
+    header("Location: login.php");
+    exit;
+}
 
 require_once 'Book.php';
 
@@ -23,27 +28,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Pridať novú knihu</title>
 </head>
 <body>
-    <h1>Pridať novú knihu</h1>
+<h1>Pridať novú knihu</h1>
 
-    <form action="add_book.php" method="POST">
-        <label for="title">Názov knihy:</label><br>
-        <input type="text" name="title" id="title" required><br><br>
+<form action="add_book.php" method="POST">
+    <label for="title">Názov knihy:</label><br>
+    <input type="text" name="title" id="title" required><br><br>
 
-        <label for="author">Autor:</label><br>
-        <input type="text" name="author" id="author" required><br><br>
+    <label for="author">Autor:</label><br>
+    <input type="text" name="author" id="author" required><br><br>
 
-        <label for="genre">Žáner:</label><br>
-        <input type="text" name="genre" id="genre" required><br><br>
+    <label for="genre">Žáner:</label><br>
+    <input type="text" name="genre" id="genre" required><br><br>
 
-        <label for="year">Rok vydania:</label><br>
-        <input type="number" name="year" id="year" required><br><br>
+    <label for="year">Rok vydania:</label><br>
+    <input type="number" name="year" id="year" required><br><br>
 
-        <label for="description">Popis:</label><br>
-        <textarea name="description" id="description"></textarea><br><br>
+    <label for="description">Popis:</label><br>
+    <textarea name="description" id="description"></textarea><br><br>
 
-        <button type="submit">Pridať knihu</button>
-    </form>
+    <button type="submit">Pridať knihu</button>
+</form>
 
-    <p><a href="index.php">Späť na zoznam kníh</a></p>
+<p><a href="index.php">Späť na zoznam kníh</a></p>
 </body>
 </html>
