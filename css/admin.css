@@ -1,0 +1,114 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #333; 
+    color: #ffffff;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #444;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+h1, h2, h3 {
+    color: #ffffff;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+form input, form select, form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #666;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #555;
+    color: white;
+}
+
+form button {
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #d35400;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #666;
+}
+
+table th {
+    background-color: #e67e22; 
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #555;
+}
+
+
+.btn {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 5px 0;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff; 
+}
+
+.btn-primary {
+    background-color: #1e90ff; 
+}
+
+.btn-primary:hover {
+    background-color: #4682b4; 
+}
+
+.btn-success {
+    background-color: #28a745; 
+}
+
+.btn-success:hover {
+    background-color: #218838; 
+}
+
+.btn-danger {
+    background-color: #dc3545; 
+}
+
+.btn-danger:hover {
+    background-color: #c82333; 
+}
+
+.btn-secondary {
+    background-color: #6c757d; 
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268; 
+}

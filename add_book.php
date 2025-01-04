@@ -1,54 +1,59 @@
 <?php
 session_start();
 if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== true) {
-    header("Location: login.php");
+    header('Location: login.php');
     exit;
 }
 
 require_once 'Book.php';
 
+$bookObj = new Book();
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $title       = $_POST['title']       ?? '';
-    $author      = $_POST['author']      ?? '';
-    $genre       = $_POST['genre']       ?? '';
-    $year        = $_POST['year']        ?? '';
-    $description = $_POST['description'] ?? '';
+    $title = $_POST['title'];
+    $author = $_POST['author'];
+    $genre = $_POST['genre'];
+    $year = $_POST['year'];
+    $description = $_POST['description'];
 
-    $bookObj = new Book();
     $bookObj->create($title, $author, $genre, $year, $description);
-
-    header("Location: index.php");
+    header('Location: index.php');
     exit;
 }
+
+
+$cssFile = 'css/admin.css';
 ?>
 <!DOCTYPE html>
 <html lang="sk">
 <head>
     <meta charset="UTF-8">
-    <title>Pridať novú knihu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pridať knihu</title>
+    <link rel="stylesheet" href="<?php echo $cssFile; ?>">
 </head>
 <body>
-<h1>Pridať novú knihu</h1>
+<div class="container">
+    <h1>Pridať novú knihu</h1>
+<a href="index.php" class="btn btn-secondary">Späť na hlavnú stránku</a>
+    <form action="add_book.php" method="POST">
+        <label for="title">Názov:</label>
+        <input type="text" name="title" id="title" required>
 
-<form action="add_book.php" method="POST">
-    <label for="title">Názov knihy:</label><br>
-    <input type="text" name="title" id="title" required><br><br>
+        <label for="author">Autor:</label>
+        <input type="text" name="author" id="author" required>
 
-    <label for="author">Autor:</label><br>
-    <input type="text" name="author" id="author" required><br><br>
+        <label for="genre">Žáner:</label>
+        <input type="text" name="genre" id="genre" required>
 
-    <label for="genre">Žáner:</label><br>
-    <input type="text" name="genre" id="genre" required><br><br>
+        <label for="year">Rok vydania:</label>
+        <input type="number" name="year" id="year" required>
 
-    <label for="year">Rok vydania:</label><br>
-    <input type="number" name="year" id="year" required><br><br>
+        <label for="description">Popis:</label>
+        <textarea name="description" id="description" rows="4" required style="width: 100%;"></textarea>
 
-    <label for="description">Popis:</label><br>
-    <textarea name="description" id="description"></textarea><br><br>
-
-    <button type="submit">Pridať knihu</button>
-</form>
-
-<p><a href="index.php">Späť na zoznam kníh</a></p>
+        <button type="submit" class="btn btn-success">Pridať</button>
+    </form>
+</div>
 </body>
 </html>
