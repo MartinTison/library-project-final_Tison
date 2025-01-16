@@ -1,67 +1,71 @@
+/* Globálne nastavenia tela stránky */
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif; /* Štýl písma */
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9; 
-    color: #333;
+    background-color: #f9f9f9; /* Svetlé pozadie */
+    color: #333; /* Tmavá farba textu */
 }
 
+/* Nastavenie hlavného kontajnera */
 .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    width: 90%; /* Šírka kontajnera */
+    max-width: 1200px; /* Maximálna šírka */
+    margin: 20px auto; /* Centrovanie a horný/dolný okraj */
+    padding: 20px; /* Vnútorné odsadenie */
+    background: #ffffff; /* Biele pozadie kontajnera */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Jemný tieň */
+    border-radius: 8px; /* Zaoblené rohy */
 }
 
+/* Farby nadpisov */
 h1, h2, h3 {
-    color: #2c3e50;
+    color: #2c3e50; /* Tmavomodrá farba nadpisov */
 }
 
+/* Nastavenia formulárov */
 form {
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Dolný okraj medzi formulármi */
 }
 
 form input, form select, form button {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
+    width: 100%; /* Šírka vstupov a tlačidiel */
+    padding: 10px; /* Vnútorné odsadenie */
+    margin-bottom: 10px; /* Dolný okraj */
+    border: 1px solid #ccc; /* Svetlý okraj */
+    border-radius: 5px; /* Zaoblené rohy */
+    font-size: 14px; /* Veľkosť písma */
 }
 
 form button {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    cursor: pointer;
+    background-color: #3498db; /* Modré pozadie tlačidla */
+    color: white; /* Biela farba textu */
+    border: none; /* Bez okraja */
+    cursor: pointer; /* Ukazovateľ myši pri prechode */
 }
 
 form button:hover {
-    background-color: #2980b9;
+    background-color: #2980b9; /* Tmavšia modrá pri prechode myšou */
 }
 
-
+/* Nastavenie tabuľky */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+    width: 100%; /* Šírka tabuľky */
+    border-collapse: collapse; /* Zjednotenie okrajov */
+    margin-top: 20px; /* Horný okraj tabuľky */
 }
 
 table th, table td {
-    text-align: left;
-    padding: 10px;
-    border: 1px solid #ddd;
+    text-align: left; /* Zarovnanie textu naľavo */
+    padding: 10px; /* Vnútorné odsadenie buniek */
+    border: 1px solid #ddd; /* Svetlé okraje buniek */
 }
 
 table th {
-    background-color: #3498db; 
-    color: white;
+    background-color: #3498db; /* Modré pozadie hlavičky */
+    color: white; /* Biela farba textu */
 }
 
 table tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #f2f2f2; /* Svetlé pozadie pre párne riadky */
 }

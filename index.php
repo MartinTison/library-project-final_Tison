@@ -1,18 +1,28 @@
 <?php
+// Spustenie session na overenie prihlásenia používateľa
 session_start();
+
+// Načítanie triedy Book pre manipuláciu s databázou
 require_once 'Book.php';
 
+// Vytvorenie inštancie triedy Book
 $bookObj = new Book();
 
-$search = $_GET['search'] ?? '';
-$genre = $_GET['genre'] ?? '';
-$year = $_GET['year'] ?? '';
+// Načítanie filtračných údajov z GET parametrov
+$search = $_GET['search'] ?? ''; // Hľadanie podľa názvu alebo autora
+$genre = $_GET['genre'] ?? '';   // Filtrovanie podľa žánru
+$year = $_GET['year'] ?? '';     // Filtrovanie podľa roku vydania
 
+// Získanie zoznamu kníh podľa filtrov
 $books = $bookObj->getAll($search, $genre, $year);
 
+// Načítanie unikátnych žánrov pre zobrazenie v selekte
 $genres = array_unique(array_column($bookObj->getAll(), 'genre'));
 
+// Kontrola, či je používateľ prihlásený ako admin
 $isAdmin = isset($_SESSION['admin']) && $_SESSION['admin'] === true;
+
+// Nastavenie CSS súboru podľa roly používateľa (admin alebo bežný používateľ)
 $cssFile = $isAdmin ? 'css/admin.css' : 'css/main.css';
 ?>
 <!DOCTYPE html>
@@ -21,12 +31,14 @@ $cssFile = $isAdmin ? 'css/admin.css' : 'css/main.css';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Knižnica</title>
+    <!-- Dynamické načítanie CSS súboru -->
     <link rel="stylesheet" href="<?php echo $cssFile; ?>">
 </head>
 <body>
 <div class="container">
     <h1>Zoznam kníh</h1>
 
+    <!-- Zobrazenie akcií pre admina alebo možnosť prihlásenia -->
     <?php if ($isAdmin): ?>
         <p>Ste prihlásený ako admin.</p>
         <a href="add_book.php" class="btn btn-success">Pridať novú knihu</a>
@@ -37,7 +49,7 @@ $cssFile = $isAdmin ? 'css/admin.css' : 'css/main.css';
 
     <hr>
 
-    <!-- Filtrovanie -->
+    <!-- Formulár na filtrovanie kníh -->
     <form action="index.php" method="GET">
         <label for="search">Hľadať podľa názvu alebo autora:</label>
         <input type="text" name="search" id="search" 
@@ -58,10 +70,11 @@ $cssFile = $isAdmin ? 'css/admin.css' : 'css/main.css';
         <input type="number" name="year" id="year" 
                value="<?php echo htmlspecialchars($year); ?>" placeholder="Zadajte rok">
 
+        <!-- Tlačidlo na odoslanie filtra -->
         <button type="submit" class="btn btn-primary">Filtrovať</button>
     </form>
 
-    <!-- Tabuľka kníh -->
+    <!-- Tabuľka na zobrazenie zoznamu kníh -->
     <table>
         <thead>
             <tr>
@@ -84,6 +97,7 @@ $cssFile = $isAdmin ? 'css/admin.css' : 'css/main.css';
                     <td><?php echo htmlspecialchars($book['year']); ?></td>
                     <td><?php echo htmlspecialchars($book['description']); ?></td>
                     <?php if ($isAdmin): ?>
+                        <!-- Akcie dostupné len pre admina -->
                         <td>
                             <a href="edit_book.php?id=<?php echo $book['id']; ?>" class="btn btn-primary">Upraviť</a>
                             <a href="delete_book.php?id=<?php echo $book['id']; ?>" 
